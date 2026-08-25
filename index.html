@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Lifting Funcional Não Cirúrgico - Estética Avançada">
+    <meta name="description" content="Lifting Funcional Não Cirúrgico - Dra. Edelnasi Sales | Biomédica Esteta">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. Edelnasi Sales | Estética Avançada & Lifting Funcional</title>
+    <title>Dra. Edelnasi Sales | Biomédica Esteta - Lifting Funcional</title>
     <link rel="icon" href="image/favicon.png">
     
     <!-- Tipografia Inter + Plus Jakarta Sans -->
@@ -19,15 +19,19 @@
 
     <style>
         :root {
-            --bg: #0F0F11;
-            --surface: #18181C;
-            --surface-hover: #222227;
-            --border: #33333C;
-            --border-glow: rgba(212, 175, 55, 0.35);
-            --primary-color: #D4AF37;       /* Dourado Champagne */
-            --primary-hover: #F3E5AB;       /* Dourado Claro Hover */
-            --text-main: #F0F0F5;
-            --text-muted: #A0A0B0;
+            --bg: #FAF6F0;                  /* Fundo Creme Off-White / Nude da Logo */
+            --surface: #FFFFFF;             /* Superfície dos Cards (Branco Puro) */
+            --surface-hover: #F5EFE6;       /* Card Hover (Nude Suave) */
+            --border: rgba(197, 160, 89, 0.25); /* Borda Dourada Suave */
+            --border-glow: rgba(197, 160, 89, 0.5);
+            
+            --primary-color: #C5A059;       /* Dourado Champagne da Logo */
+            --primary-hover: #A8833D;       /* Dourado Mais Escuro para Hover */
+            --sage-green: #7A9A8B;          /* Verde Salvia / Eucalipto da Logo */
+            
+            --text-main: #2B231F;           /* Marrom / Bronze Escuro (Substitui o Preto) */
+            --text-muted: #6E655F;          /* Texto Secundário Cinza Warm / Marrom Suave */
+            
             --radius-lg: 20px;
             --radius-md: 12px;
             --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -68,14 +72,14 @@
             padding: 20px 0;
             transition: var(--transition-smooth);
             backdrop-filter: blur(12px);
-            background: rgba(15, 15, 17, 0.85);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(250, 246, 240, 0.85);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
         }
 
         .navbar.sticky {
-            background: rgba(24, 24, 28, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             padding: 14px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(43, 35, 31, 0.05);
         }
 
         .navbar .nav-content {
@@ -94,6 +98,16 @@
 
         .brand-title span {
             color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .brand-subtitle {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--sage-green);
+            font-weight: 600;
+            margin-top: -3px;
         }
 
         .navbar .menu {
@@ -134,20 +148,21 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(212, 175, 55, 0.08);
-            border: 1px solid var(--border-glow);
+            background: rgba(122, 154, 139, 0.1);
+            border: 1px solid rgba(122, 154, 139, 0.3);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 13px;
-            color: var(--primary-hover);
+            color: var(--sage-green);
+            font-weight: 600;
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
-            background-color: var(--primary-color);
+            background-color: var(--sage-green);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary-color);
+            box-shadow: 0 0 8px var(--sage-green);
             animation: pulse 2s infinite;
         }
 
@@ -157,7 +172,7 @@
             100% { opacity: 1; }
         }
 
-        /* HERO SECTION INTEGRADA */
+        /* HERO SECTION */
         .hero {
             padding-top: 140px;
             padding-bottom: 40px;
@@ -165,10 +180,10 @@
         }
 
         .hero .tagline {
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--primary-color);
+            color: var(--sage-green);
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -178,16 +193,26 @@
             font-size: 48px;
             font-weight: 700;
             line-height: 1.15;
-            margin-bottom: 16px;
-            background: linear-gradient(180deg, #FFFFFF 0%, #A0A0A0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .hero .slogan-pills {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 620px;
             margin: 0 auto 30px auto;
         }
 
@@ -210,13 +235,14 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(43, 35, 31, 0.03);
         }
 
         .bento-card:hover {
             border-color: var(--border-glow);
             transform: translateY(-5px);
             background: var(--surface-hover);
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 14px 35px rgba(197, 160, 89, 0.12);
         }
 
         .col-span-2 { grid-column: span 2; }
@@ -240,7 +266,7 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 12px;
-            color: #FFF;
+            color: var(--text-main);
         }
 
         .card-desc {
@@ -255,13 +281,13 @@
             justify-content: center;
             gap: 10px;
             background: var(--primary-color);
-            color: #000;
+            color: #FFFFFF;
             padding: 14px 28px;
             border-radius: var(--radius-md);
             font-weight: 600;
             font-size: 15px;
             transition: var(--transition-smooth);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
             width: fit-content;
             border: none;
             cursor: pointer;
@@ -270,7 +296,7 @@
         .btn-primary:hover {
             background: var(--primary-hover);
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
         }
 
         .btn-secondary {
@@ -292,7 +318,7 @@
         .btn-secondary:hover {
             border-color: var(--primary-color);
             color: var(--primary-color);
-            background: rgba(212, 175, 55, 0.05);
+            background: rgba(197, 160, 89, 0.08);
         }
 
         /* PERFIL DA DOUTORA */
@@ -309,7 +335,7 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border-glow);
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(197, 160, 89, 0.05);
         }
 
         .doctor-photo-container img {
@@ -336,7 +362,7 @@
             align-items: center;
             gap: 12px;
             padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(250, 246, 240, 0.6);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             font-size: 14px;
@@ -346,9 +372,10 @@
         .procedure-item:hover, .benefit-item:hover {
             border-color: var(--primary-color);
             transform: translateX(4px);
+            background: #FFF;
         }
 
-        /* PILARES DO TRATAMENTO (CARDS INTERNOS) */
+        /* PILARES DO TRATAMENTO */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -357,7 +384,7 @@
         }
 
         .pillar-box {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(250, 246, 240, 0.6);
             border: 1px solid var(--border);
             padding: 20px;
             border-radius: var(--radius-md);
@@ -366,17 +393,18 @@
 
         .pillar-box:hover {
             border-color: var(--primary-color);
+            background: #FFF;
         }
 
         .pillar-box i {
-            color: var(--primary-color);
+            color: var(--sage-green);
             margin-bottom: 10px;
         }
 
         .pillar-box h4 {
             font-size: 16px;
             margin-bottom: 6px;
-            color: #FFF;
+            color: var(--text-main);
         }
 
         .pillar-box p {
@@ -413,12 +441,10 @@
             border: 1px solid var(--border);
             overflow: hidden;
             margin-top: 20px;
-            filter: grayscale(100%) invert(92%) contrast(83%);
             transition: var(--transition-smooth);
         }
 
         .bento-card:hover .map-container {
-            filter: grayscale(20%) invert(92%) contrast(85%);
             border-color: var(--border-glow);
         }
 
@@ -438,11 +464,11 @@
 
         .contact-form input, .contact-form textarea {
             width: 100%;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(250, 246, 240, 0.6);
             border: 1px solid var(--border);
             padding: 14px;
             border-radius: var(--radius-md);
-            color: #fff;
+            color: var(--text-main);
             font-family: inherit;
             outline: none;
             transition: var(--transition-smooth);
@@ -450,7 +476,8 @@
 
         .contact-form input:focus, .contact-form textarea:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            background: #FFF;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
         }
 
         .contact-form textarea {
@@ -470,6 +497,7 @@
 
         footer a {
             color: var(--primary-color);
+            font-weight: 500;
         }
 
         /* RESPONSIVIDADE */
@@ -481,6 +509,7 @@
             .doctor-photo-container { width: 100%; height: 240px; }
             .pillars-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 36px; }
+            .hero .slogan-pills { flex-direction: column; gap: 5px; }
         }
     </style>
 </head>
@@ -489,7 +518,10 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container nav-content">
-            <div class="brand-title">Dra. Edelnasi <span>Sales</span></div>
+            <div>
+                <div class="brand-title">Dra. Edelnasi <span>Sales</span></div>
+                <div class="brand-subtitle">Biomédica Esteta</div>
+            </div>
             <ul class="menu">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
@@ -509,15 +541,20 @@
 
         <!-- HERO SECTION -->
         <section class="hero" id="home" data-aos="fade-down">
-            <div class="tagline">Estética Avançada</div>
+            <div class="tagline">Biomédica Esteta</div>
             <h1>Lifting Funcional Não Cirúrgico</h1>
-            <p>Sustentação, firmeza e harmonização facial de alta precisão sem intervenções cirúrgicas e sem tempo de inatividade.</p>
+            
+            <div class="slogan-pills">
+                <span>Natural</span> • <span>Sustentação</span> • <span>Harmonia</span>
+            </div>
+
+            <p>Rejuvenescimento sem cirurgia, focado no estímulo de firmeza, sustentação tecidual e redefinição de contornos de alta precisão.</p>
         </section>
 
         <!-- BENTO GRID MAIN CONTAINER -->
         <main class="bento-grid">
 
-            <!-- CARD 1: SOBRE A DOUTORA / FILOSOFIA (Hero Bento) -->
+            <!-- CARD 1: SOBRE A DOUTORA / FILOSOFIA -->
             <div class="bento-card col-span-2" id="about" data-aos="fade-up" data-aos-delay="100">
                 <div>
                     <div class="card-tag">
@@ -531,13 +568,13 @@
 
                         <div>
                             <div class="card-title" style="font-size: 24px;">Sustentação e Harmonia Natural</div>
-                            <div class="card-desc">O Lifting Funcional combina tecnologia e ciência para estimular a firmeza e redefinir contornos. Focada em rejuvenescimento consciente e gerenciamento de envelhecimento minimamente invasivo.</div>
+                            <div class="card-desc">O Lifting Funcional alia ciência e tecnologia para promover o rejuvenescimento consciente. Como Biomédica Esteta, meu foco é devolver o suporte estrutural da pele mantendo a naturalidade dos seus traços.</div>
                         </div>
                     </div>
                 </div>
                 
                 <a href="#contato" class="btn-primary" style="margin-top: 20px;">
-                    <i data-lucide="calendar" size="18"></i> Agendar Consulta Avaliativa
+                    <i data-lucide="calendar" size="18"></i> Agendar Avaliação
                 </a>
             </div>
 
@@ -548,7 +585,7 @@
                         <i data-lucide="instagram" size="14"></i> Acompanhe
                     </div>
                     <div class="card-title">Casos Diários</div>
-                    <div class="card-desc">Confira bastidores dos tratamentos, análises técnicas e dúvidas comuns diretamente no perfil.</div>
+                    <div class="card-desc">Veja a rotina de atendimento, bastidores dos procedimentos e dúvidas frequentes nas redes.</div>
                 </div>
                 <a href="https://instagram.com" target="_blank" class="btn-secondary" style="margin-top: 20px;">
                     <i data-lucide="arrow-up-right" size="18"></i> @estetica.avancada
@@ -559,26 +596,26 @@
             <div class="bento-card col-span-3" id="pilares" data-aos="fade-up" data-aos-delay="300">
                 <div>
                     <div class="card-tag">
-                        <i data-lucide="shield-check" size="14"></i> Tecnologia & Precisão
+                        <i data-lucide="shield-check" size="14"></i> Ciência & Segurança
                     </div>
                     <div class="card-title">Pilares do Tratamento</div>
-                    <div class="card-desc">Método estruturado para garantir máxima segurança e naturalidade nos resultados.</div>
+                    <div class="card-desc">Protocolo biomédico estruturado para entregar sustentação com total elegância.</div>
                     
                     <div class="pillars-grid">
                         <div class="pillar-box">
                             <i data-lucide="sparkle" size="24"></i>
                             <h4>Sustentação Profunda</h4>
-                            <p>Estimula camadas estruturais da pele, devolvendo o suporte natural sem cortes.</p>
+                            <p>Atua nas camadas estruturais da pele promovendo suporte sem necessidade de cortes.</p>
                         </div>
                         <div class="pillar-box">
                             <i data-lucide="scan" size="24"></i>
                             <h4>Contorno Definido</h4>
-                            <p>Redefine a linha da mandíbula e maçãs do rosto com extrema precisão.</p>
+                            <p>Refina as linhas da mandíbula e o terço médio facial com precisão técnica.</p>
                         </div>
                         <div class="pillar-box">
                             <i data-lucide="flower2" size="24"></i>
                             <h4>Harmonização Leve</h4>
-                            <p>Aspecto descansado e jovial preservando a identidade dos seus traços.</p>
+                            <p>Garante um visual revigorado e descansado preservando sua identidade visual.</p>
                         </div>
                     </div>
                 </div>
@@ -590,24 +627,24 @@
                     <div class="card-tag">
                         <i data-lucide="check-circle-2" size="14"></i> Vantagens Clínicas
                     </div>
-                    <div class="card-title">Por que escolher o Lifting Funcional?</div>
+                    <div class="card-title">Por que escolher este método?</div>
                     
                     <div class="benefit-list">
                         <div class="benefit-item">
-                            <i data-lucide="check" size="18" style="color: var(--primary-color);"></i>
-                            <span><strong>Estímulo de Firmeza:</strong> Restaura a elasticidade e densidade tecidual.</span>
+                            <i data-lucide="check" size="18" style="color: var(--sage-green);"></i>
+                            <span><strong>Estímulo de Firmeza:</strong> Restaura a densidade e elasticidade cutânea.</span>
                         </div>
                         <div class="benefit-item">
-                            <i data-lucide="check" size="18" style="color: var(--primary-color);"></i>
-                            <span><strong>Zero Downtime:</strong> Retorne às suas atividades cotidianas imediatamente.</span>
+                            <i data-lucide="check" size="18" style="color: var(--sage-green);"></i>
+                            <span><strong>Zero Downtime:</strong> Retorne às atividades normais sem longo repouso.</span>
                         </div>
                         <div class="benefit-item">
-                            <i data-lucide="check" size="18" style="color: var(--primary-color);"></i>
-                            <span><strong>Resultados Progressivos:</strong> Melhora contínua e duradoura da qualidade cutânea.</span>
+                            <i data-lucide="check" size="18" style="color: var(--sage-green);"></i>
+                            <span><strong>Resultados Progressivos:</strong> Melhora contínua no aspecto da pele.</span>
                         </div>
                         <div class="benefit-item">
-                            <i data-lucide="check" size="18" style="color: var(--primary-color);"></i>
-                            <span><strong>Procedimento Seguro:</strong> Protocolo minimamente invasivo e altamente testado.</span>
+                            <i data-lucide="check" size="18" style="color: var(--sage-green);"></i>
+                            <span><strong>Procedimento Seguro:</strong> Minimanente invasivo e personalizado.</span>
                         </div>
                     </div>
                 </div>
@@ -620,7 +657,7 @@
                         <i data-lucide="image" size="14"></i> Resultados
                     </div>
                     <div class="card-title">Evolução Clínica</div>
-                    <div class="card-desc">Acompanhe transformações reais em nossos pacientes.</div>
+                    <div class="card-desc">Transformações alinhadas ao conceito de rejuvenescimento natural.</div>
                     
                     <div class="case-preview">
                         <img src="https://images.unsplash.com/photo-1512290900673-7002b54173b4?q=80&w=600&auto=format&fit=crop" alt="Resultado Clínico">
@@ -632,15 +669,15 @@
             <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="600">
                 <div>
                     <div class="card-tag">
-                        <i data-lucide="send" size="14"></i> Direct Contact
+                        <i data-lucide="send" size="14"></i> Atendimento
                     </div>
                     <div class="card-title">Agende sua Consulta</div>
-                    <div class="card-desc">Preencha o formulário abaixo para receber o contato da nossa equipe:</div>
+                    <div class="card-desc">Preencha os dados para que nossa equipe entre em contato com você:</div>
                     
                     <form class="contact-form" action="#" method="post">
                         <input type="text" placeholder="Seu Nome Completo" required>
-                        <input type="email" placeholder="Seu E-mail de Preferência" required>
-                        <input type="text" placeholder="Assunto (ex: Avaliação de Lifting)" required>
+                        <input type="email" placeholder="Seu E-mail" required>
+                        <input type="text" placeholder="Assunto (ex: Consulta Lifting)" required>
                         <textarea placeholder="Como podemos ajudar você?" required></textarea>
                         <button type="submit" class="btn-primary" style="width: 100%;">
                             <i data-lucide="send" size="16"></i> Enviar Mensagem
@@ -655,11 +692,11 @@
                     <div class="card-tag">
                         <i data-lucide="map-pin" size="14"></i> Consultório
                     </div>
-                    <div class="card-title">Atendimento</div>
+                    <div class="card-title">Localização</div>
                     <div class="card-desc" style="margin-bottom: 15px;">Av. Paulista, 1000 — Sala 502, São Paulo - SP</div>
                     
                     <a href="https://wa.me/5500000000000" target="_blank" class="btn-secondary" style="width: 100%; text-align: center;">
-                        <i data-lucide="message-square" size="18"></i> Falar no WhatsApp
+                        <i data-lucide="message-square" size="18"></i> Conversar via WhatsApp
                     </a>
 
                     <!-- MAPA INTERATIVO EMBUTIDO -->
@@ -680,7 +717,7 @@
     <!-- RODAPÉ -->
     <footer>
         <div class="container">
-            <p>© 2026 Dra. Edelnasi Sales — Todos os direitos reservados. | <a href="#contato">Contato</a> | <a href="https://instagram.com" target="_blank">Instagram</a></p>
+            <p>© 2026 Dra. Edelnasi Sales — Biomédica Esteta. Todos os direitos reservados. | <a href="#contato">Contato</a> | <a href="https://instagram.com" target="_blank">Instagram</a></p>
         </div>
     </footer>
 
