@@ -29,8 +29,8 @@
             --primary-hover: #A8833D;       /* Dourado Mais Escuro para Hover */
             --sage-green: #7A9A8B;          /* Verde Salvia / Eucalipto da Logo */
             
-            --text-main: #2B231F;           /* Marrom / Bronze Escuro (Substitui o Preto) */
-            --text-muted: #6E655F;          /* Texto Secundário Cinza Warm / Marrom Suave */
+            --text-main: #2B231F;           /* Marrom / Bronze Escuro */
+            --text-muted: #6E655F;          /* Texto Secundário */
             
             --radius-lg: 20px;
             --radius-md: 12px;
@@ -172,18 +172,25 @@
             100% { opacity: 1; }
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION COM IMAGEM DE FUNDO E TEXTO POR CIMA */
         .hero {
-            padding-top: 140px;
-            padding-bottom: 40px;
+            padding-top: 170px;
+            padding-bottom: 80px;
+            margin-bottom: 40px;
             text-align: center;
+            position: relative;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            
+            /* IMAGEM DE FUNDO COM SOBREPOSIÇÃO ESCURA (Altere 'sua-foto.jpg' pelo seu arquivo) */
+            background: linear-gradient(rgba(20, 16, 14, 0.65), rgba(20, 16, 14, 0.65)), url("imagem-menu.webp") center/cover no-repeat;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .hero .tagline {
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--sage-green);
+            color: #E2C58A; /* Dourado claro para contraste */
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -194,7 +201,8 @@
             font-weight: 700;
             line-height: 1.15;
             margin-bottom: 12px;
-            color: var(--text-main);
+            color: #FFFFFF; /* Texto em branco por cima da imagem */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero .slogan-pills {
@@ -205,15 +213,16 @@
             font-size: 13px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--primary-color);
+            color: #F5EFE6;
             font-weight: 600;
         }
 
         .hero p {
             font-size: 17px;
-            color: var(--text-muted);
+            color: #E0E0E0; /* Cinza claro para leitura legível */
             max-width: 620px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
 
         /* BENTO GRID LAYOUT */
@@ -526,7 +535,7 @@
             .doctor-profile-wrapper { grid-template-columns: 1fr; }
             .doctor-photo-container { width: 100%; height: 240px; }
             .pillars-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 34px; }
             .hero .slogan-pills { flex-direction: column; gap: 5px; }
         }
     </style>
@@ -555,10 +564,9 @@
         </div>
     </nav>
 
-    <div class="container">
-
-        <!-- HERO SECTION -->
-        <section class="hero" id="home" data-aos="fade-down">
+    <!-- HERO SECTION COM IMAGEM DE FUNDO -->
+    <section class="hero" id="home" data-aos="fade-down">
+        <div class="container">
             <div class="tagline">Biomédica Esteta</div>
             <h1>Lifting Funcional Não Cirúrgico</h1>
             
@@ -567,8 +575,10 @@
             </div>
 
             <p>Rejuvenescimento sem cirurgia, focado no estímulo de firmeza, sustentação tecidual e redefinição de contornos de alta precisão.</p>
-        </section>
+        </div>
+    </section>
 
+    <div class="container">
         <!-- BENTO GRID MAIN CONTAINER -->
         <main class="bento-grid">
 
@@ -581,7 +591,7 @@
                     
                     <div class="doctor-profile-wrapper">
                         <div class="doctor-photo-container">
-                            <img src="https://images.unsplash.com/photo-1594824813571-27443b161ac2?q=80&w=600&auto=format&fit=crop" alt="Dra. Edelnasi Sales">
+                            <img src="imagem-menu.webp" alt="Dra. Edelnasi Sales">
                         </div>
 
                         <div>
@@ -678,12 +688,12 @@
                     <div class="card-desc">Transformações alinhadas ao conceito de rejuvenescimento natural.</div>
                     
                     <div class="case-preview">
-                        <img src="https://images.unsplash.com/photo-1512290900673-7002b54173b4?q=80&w=600&auto=format&fit=crop" alt="Resultado Clínico">
+                        <img src="imagem-menu.webp" alt="Resultado Clínico">
                     </div>
                 </div>
             </div>
 
-            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO (ENVIO SILENCIOSO COM JS) -->
+            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO (ENVIO VIA AJAX JS) -->
             <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="600">
                 <div>
                     <div class="card-tag">
@@ -694,17 +704,11 @@
                     
                     <!-- FORMULÁRIO AJAX JS -->
                     <form class="contact-form" id="formContato">
-                        <!-- Chave de Acesso Web3Forms -->
                         <input type="hidden" name="access_key" value="c1d712b6-d7d1-4510-9403-d964d6f88560">
-                        
-                        <!-- Configurações de Identificação do E-mail -->
                         <input type="hidden" name="subject" value="Nova Solicitacao de Agendamento - Site Dra. Edelnasi">
                         <input type="hidden" name="from_name" value="Landing Page Dra. Edelnasi Sales">
-
-                        <!-- Proteção Oculta Anti-SPAM (Honeypot) -->
                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                        <!-- Campos de Entrada de Dados -->
                         <input type="text" name="name" placeholder="Seu Nome Completo" required>
                         <input type="email" name="email" placeholder="Seu E-mail" required>
                         <input type="text" name="subject_user" placeholder="Assunto (ex: Consulta Lifting)" required>
@@ -714,7 +718,6 @@
                             <i data-lucide="send" size="16"></i> Enviar Mensagem
                         </button>
 
-                        <!-- MENSAGEM DE STATUS DENTRO DO FORMULÁRIO -->
                         <div id="statusMensagem"></div>
                     </form>
                 </div>
@@ -733,7 +736,6 @@
                         <i data-lucide="message-square" size="18"></i> Conversar via WhatsApp
                     </a>
 
-                    <!-- MAPA INTERATIVO EMBUTIDO -->
                     <div class="map-container">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249.28345487336196!2d-48.44874667446473!3d-1.4530923227755752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1787686108022!5m2!1spt-BR!2sbr" 
@@ -774,7 +776,7 @@
             nav.classList.toggle("sticky", window.scrollY > 30);
         });
 
-        // LÓGICA DE ENVIO DO FORMULÁRIO VIA AJAX (WEB3FORMS)
+        // ENVIO DO FORMULÁRIO VIA AJAX
         const form = document.getElementById('formContato');
         const statusMensagem = document.getElementById('statusMensagem');
         const btnEnviar = document.getElementById('btnEnviar');
@@ -782,7 +784,6 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Alterar estado do botão para carregando
             btnEnviar.disabled = true;
             btnEnviar.innerHTML = 'Enviando...';
             
@@ -823,12 +824,10 @@
                 statusMensagem.innerHTML = "Erro na conexão. Verifique sua rede e tente novamente.";
             })
             .then(function() {
-                // Restaurar o botão e ícones
                 btnEnviar.disabled = false;
                 btnEnviar.innerHTML = '<i data-lucide="send" size="16"></i> Enviar Mensagem';
                 lucide.createIcons();
                 
-                // Ocultar mensagem de status após 6 segundos
                 setTimeout(() => { 
                     statusMensagem.style.display = "none"; 
                 }, 6000);
