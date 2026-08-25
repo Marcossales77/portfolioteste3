@@ -665,7 +665,7 @@
                 </div>
             </div>
 
-            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO -->
+            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO (WEB3FORMS INTEGRADO) -->
             <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="600">
                 <div>
                     <div class="card-tag">
@@ -674,11 +674,24 @@
                     <div class="card-title">Agende sua Consulta</div>
                     <div class="card-desc">Preencha os dados para que nossa equipe entre em contato com você:</div>
                     
-                    <form class="contact-form" action="#" method="post">
-                        <input type="text" placeholder="Seu Nome Completo" required>
-                        <input type="email" placeholder="Seu E-mail" required>
-                        <input type="text" placeholder="Assunto (ex: Consulta Lifting)" required>
-                        <textarea placeholder="Como podemos ajudar você?" required></textarea>
+                    <!-- FORMULÁRIO COM WEB3FORMS -->
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Chave de Acesso Web3Forms -->
+                        <input type="hidden" name="access_key" value="c1d712b6-d7d1-4510-9403-d964d6f88560">
+                        
+                        <!-- Configurações de Identificação do E-mail -->
+                        <input type="hidden" name="subject" value="Nova Solicitacao de Agendamento - Site Dra. Edelnasi">
+                        <input type="hidden" name="from_name" value="Landing Page Dra. Edelnasi Sales">
+
+                        <!-- Proteção Oculta Anti-SPAM (Honeypot) -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <!-- Campos de Entrada de Dados -->
+                        <input type="text" name="name" placeholder="Seu Nome Completo" required>
+                        <input type="email" name="email" placeholder="Seu E-mail" required>
+                        <input type="text" name="subject_user" placeholder="Assunto (ex: Consulta Lifting)" required>
+                        <textarea name="message" placeholder="Como podemos ajudar você?" required></textarea>
+                        
                         <button type="submit" class="btn-primary" style="width: 100%;">
                             <i data-lucide="send" size="16"></i> Enviar Mensagem
                         </button>
@@ -702,7 +715,7 @@
                     <!-- MAPA INTERATIVO EMBUTIDO -->
                     <div class="map-container">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0982236166166!2d-46.65431602377317!3d-23.56309896186008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2d97143!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249.28345487336196!2d-48.44874667446473!3d-1.4530923227755752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1787686108022!5m2!1spt-BR!2sbr" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
