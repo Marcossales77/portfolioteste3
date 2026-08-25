@@ -299,6 +299,12 @@
             box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
         }
 
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .btn-secondary {
             display: inline-flex;
             align-items: center;
@@ -485,6 +491,18 @@
             resize: none;
         }
 
+        /* MENSAGEM DE STATUS DO ENVIO */
+        #statusMensagem {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            display: none;
+            transition: var(--transition-smooth);
+        }
+
         /* FOOTER */
         footer {
             padding: 40px 0;
@@ -665,7 +683,7 @@
                 </div>
             </div>
 
-            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO (WEB3FORMS INTEGRADO) -->
+            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO (ENVIO SILENCIOSO COM JS) -->
             <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="600">
                 <div>
                     <div class="card-tag">
@@ -674,8 +692,8 @@
                     <div class="card-title">Agende sua Consulta</div>
                     <div class="card-desc">Preencha os dados para que nossa equipe entre em contato com você:</div>
                     
-                    <!-- FORMULÁRIO COM WEB3FORMS -->
-                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- FORMULÁRIO AJAX JS -->
+                    <form class="contact-form" id="formContato">
                         <!-- Chave de Acesso Web3Forms -->
                         <input type="hidden" name="access_key" value="c1d712b6-d7d1-4510-9403-d964d6f88560">
                         
@@ -692,9 +710,12 @@
                         <input type="text" name="subject_user" placeholder="Assunto (ex: Consulta Lifting)" required>
                         <textarea name="message" placeholder="Como podemos ajudar você?" required></textarea>
                         
-                        <button type="submit" class="btn-primary" style="width: 100%;">
+                        <button type="submit" id="btnEnviar" class="btn-primary" style="width: 100%;">
                             <i data-lucide="send" size="16"></i> Enviar Mensagem
                         </button>
+
+                        <!-- MENSAGEM DE STATUS DENTRO DO FORMULÁRIO -->
+                        <div id="statusMensagem"></div>
                     </form>
                 </div>
             </div>
@@ -751,6 +772,67 @@
         window.addEventListener("scroll", function() {
             const nav = document.querySelector(".navbar");
             nav.classList.toggle("sticky", window.scrollY > 30);
+        });
+
+        // LÓGICA DE ENVIO DO FORMULÁRIO VIA AJAX (WEB3FORMS)
+        const form = document.getElementById('formContato');
+        const statusMensagem = document.getElementById('statusMensagem');
+        const btnEnviar = document.getElementById('btnEnviar');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Alterar estado do botão para carregando
+            btnEnviar.disabled = true;
+            btnEnviar.innerHTML = 'Enviando...';
+            
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    statusMensagem.style.display = "block";
+                    statusMensagem.style.backgroundColor = "rgba(122, 154, 139, 0.15)";
+                    statusMensagem.style.color = "var(--sage-green)";
+                    statusMensagem.style.border = "1px solid var(--sage-green)";
+                    statusMensagem.innerHTML = "✓ Mensagem enviada com sucesso! Entraremos em contato em breve.";
+                    form.reset();
+                } else {
+                    statusMensagem.style.display = "block";
+                    statusMensagem.style.backgroundColor = "rgba(255, 0, 0, 0.08)";
+                    statusMensagem.style.color = "#d9534f";
+                    statusMensagem.style.border = "1px solid #d9534f";
+                    statusMensagem.innerHTML = "Ocorreu um erro ao enviar. Tente novamente.";
+                }
+            })
+            .catch(error => {
+                statusMensagem.style.display = "block";
+                statusMensagem.style.backgroundColor = "rgba(255, 0, 0, 0.08)";
+                statusMensagem.style.color = "#d9534f";
+                statusMensagem.style.border = "1px solid #d9534f";
+                statusMensagem.innerHTML = "Erro na conexão. Verifique sua rede e tente novamente.";
+            })
+            .then(function() {
+                // Restaurar o botão e ícones
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = '<i data-lucide="send" size="16"></i> Enviar Mensagem';
+                lucide.createIcons();
+                
+                // Ocultar mensagem de status após 6 segundos
+                setTimeout(() => { 
+                    statusMensagem.style.display = "none"; 
+                }, 6000);
+            });
         });
     </script>
 </body>
