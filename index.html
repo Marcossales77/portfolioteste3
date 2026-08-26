@@ -5,7 +5,7 @@
     <meta name="description" content="Lifting Funcional Não Cirúrgico - Dra. Edelnasi Sales | Biomédica Esteta">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. Edelnasi Sales | Biomédica Esteta </title>
+    <title>Dra. Edelnasi Sales | Biomédica Esteta</title>
     <link rel="icon" href="logo-dellsales.jpg">
     
     <!-- Tipografia Inter + Plus Jakarta Sans -->
@@ -172,7 +172,7 @@
             100% { opacity: 1; }
         }
 
-        /* HERO SECTION COM IMAGEM DE FUNDO E TEXTO POR CIMA */
+        /* HERO SECTION */
         .hero {
             padding-top: 170px;
             padding-bottom: 80px;
@@ -180,8 +180,6 @@
             text-align: center;
             position: relative;
             border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-            
-            /* IMAGEM DE FUNDO COM SOBREPOSIÇÃO ESCURA (Altere 'sua-foto.jpg' pelo seu arquivo) */
             background: linear-gradient(rgba(20, 16, 14, 0.65), rgba(20, 16, 14, 0.65)), url("imagem-menu.webp") center/cover no-repeat;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
@@ -190,7 +188,7 @@
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: #E2C58A; /* Dourado claro para contraste */
+            color: #E2C58A;
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -201,7 +199,7 @@
             font-weight: 700;
             line-height: 1.15;
             margin-bottom: 12px;
-            color: #FFFFFF; /* Texto em branco por cima da imagem */
+            color: #FFFFFF;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
@@ -219,7 +217,7 @@
 
         .hero p {
             font-size: 17px;
-            color: #E0E0E0; /* Cinza claro para leitura legível */
+            color: #E0E0E0;
             max-width: 620px;
             margin: 0 auto;
             text-shadow: 0 1px 5px rgba(0,0,0,0.3);
@@ -364,15 +362,63 @@
             transform: scale(1.05);
         }
 
-        /* LISTAS DE SERVIÇOS E BENEFÍCIOS */
-        .procedure-list, .benefit-list {
+        /* GALERIA DE FOTOS E VÍDEOS */
+        .media-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .media-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 4 / 3;
+        }
+
+        .media-item img, 
+        .media-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            display: block;
+        }
+
+        .media-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .media-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(43, 35, 31, 0.75);
+            backdrop-filter: blur(4px);
+            color: #FFF;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 2;
+        }
+
+        /* BENEFÍCIOS */
+        .benefit-list {
             margin-top: 16px;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .procedure-item, .benefit-item {
+        .benefit-item {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -384,7 +430,7 @@
             transition: var(--transition-smooth);
         }
 
-        .procedure-item:hover, .benefit-item:hover {
+        .benefit-item:hover {
             border-color: var(--primary-color);
             transform: translateX(4px);
             background: #FFF;
@@ -425,27 +471,6 @@
         .pillar-box p {
             font-size: 13px;
             color: var(--text-muted);
-        }
-
-        /* PREVIEW CASO CLÍNICO */
-        .case-preview {
-            width: 100%;
-            height: 200px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            margin-top: 15px;
-            overflow: hidden;
-        }
-
-        .case-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-        }
-
-        .bento-card:hover .case-preview img {
-            transform: scale(1.03);
         }
 
         /* MAPA INTERATIVO */
@@ -535,6 +560,7 @@
             .doctor-profile-wrapper { grid-template-columns: 1fr; }
             .doctor-photo-container { width: 100%; height: 240px; }
             .pillars-grid { grid-template-columns: 1fr; }
+            .media-gallery-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 34px; }
             .hero .slogan-pills { flex-direction: column; gap: 5px; }
         }
@@ -553,8 +579,8 @@
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#galeria">Fotos & Vídeos</a></li>
                 <li><a href="#beneficios">Benefícios</a></li>
-                <li><a href="#resultados">Resultados</a></li>
                 <li><a href="#contato">Agendar</a></li>
             </ul>
             <div class="status-badge">
@@ -582,7 +608,7 @@
         <!-- BENTO GRID MAIN CONTAINER -->
         <main class="bento-grid">
 
-            <!-- CARD 1: SOBRE A DOUTORA / FILOSOFIA -->
+            <!-- CARD 1: SOBRE A DOUTORA -->
             <div class="bento-card col-span-2" id="about" data-aos="fade-up" data-aos-delay="100">
                 <div>
                     <div class="card-tag">
@@ -620,7 +646,50 @@
                 </a>
             </div>
 
-            <!-- CARD 3: PILARES DO TRATAMENTO -->
+            <!-- CARD 3: NOVA COLUNA PARA FOTOS E VÍDEOS -->
+            <div class="bento-card col-span-3" id="galeria" data-aos="fade-up" data-aos-delay="250">
+                <div>
+                    <div class="card-tag">
+                        <i data-lucide="film" size="14"></i> Galeria Clínica
+                    </div>
+                    <div class="card-title">Fotos & Vídeos do Procedimento</div>
+                    <div class="card-desc">Confira registros detalhados das etapas de aplicação, demonstrações técnicas e resultados dos tratamentos.</div>
+                    
+                    <div class="media-gallery-grid">
+                        <!-- Mídia 1: Vídeo de Procedimento -->
+                        <div class="media-item">
+                            <span class="media-badge">
+                                <i data-lucide="play-circle" size="12"></i> Vídeo
+                            </span>
+                            <video controls poster="imagem-menu.webp">
+                                <source src="video-procedimento.mp4" type="video/mp4">
+                                Seu navegador não suporta o formato de vídeo.
+                            </video>
+                        </div>
+
+                        <!-- Mídia 2: Foto Antes/Depois ou Aplicação -->
+                        <div class="media-item">
+                            <span class="media-badge">
+                                <i data-lucide="camera" size="12"></i> Foto
+                            </span>
+                            <img src="imagem-menu.webp" alt="Aplicação do Lifting Funcional">
+                        </div>
+
+                        <!-- Mídia 3: Vídeo Explicativo -->
+                        <div class="media-item">
+                            <span class="media-badge">
+                                <i data-lucide="play-circle" size="12"></i> Vídeo
+                            </span>
+                            <video controls poster="imagem-menu.webp">
+                                <source src="video-explicativo.mp4" type="video/mp4">
+                                Seu navegador não suporta o formato de vídeo.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4: PILARES DO TRATAMENTO -->
             <div class="bento-card col-span-3" id="pilares" data-aos="fade-up" data-aos-delay="300">
                 <div>
                     <div class="card-tag">
@@ -649,8 +718,8 @@
                 </div>
             </div>
 
-            <!-- CARD 4: BENEFÍCIOS DO PROCEDIMENTO -->
-            <div class="bento-card col-span-2" id="beneficios" data-aos="fade-up" data-aos-delay="400">
+            <!-- CARD 5: BENEFÍCIOS DO PROCEDIMENTO -->
+            <div class="bento-card col-span-3" id="beneficios" data-aos="fade-up" data-aos-delay="400">
                 <div>
                     <div class="card-tag">
                         <i data-lucide="check-circle-2" size="14"></i> Vantagens Clínicas
@@ -672,29 +741,14 @@
                         </div>
                         <div class="benefit-item">
                             <i data-lucide="check" size="18" style="color: var(--sage-green);"></i>
-                            <span><strong>Procedimento Seguro:</strong> Minimanente invasivo e personalizado.</span>
+                            <span><strong>Procedimento Seguro:</strong> Minimamente invasivo e personalizado.</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- CARD 5: RESULTADOS / ANTES E DEPOIS -->
-            <div class="bento-card" id="resultados" data-aos="fade-up" data-aos-delay="500">
-                <div>
-                    <div class="card-tag">
-                        <i data-lucide="image" size="14"></i> Resultados
-                    </div>
-                    <div class="card-title">Evolução Clínica</div>
-                    <div class="card-desc">Transformações alinhadas ao conceito de rejuvenescimento natural.</div>
-                    
-                    <div class="case-preview">
-                        <img src="imagem-menu.webp" alt="Resultado Clínico">
-                    </div>
-                </div>
-            </div>
-
-            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO (ENVIO VIA AJAX JS) -->
-            <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="600">
+            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO -->
+            <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="500">
                 <div>
                     <div class="card-tag">
                         <i data-lucide="send" size="14"></i> Atendimento
@@ -702,7 +756,6 @@
                     <div class="card-title">Agende sua Consulta</div>
                     <div class="card-desc">Preencha os dados para que nossa equipe entre em contato com você:</div>
                     
-                    <!-- FORMULÁRIO AJAX JS -->
                     <form class="contact-form" id="formContato">
                         <input type="hidden" name="access_key" value="c1d712b6-d7d1-4510-9403-d964d6f88560">
                         <input type="hidden" name="subject" value="Nova Solicitacao de Agendamento - Site Dra. Edelnasi">
@@ -723,8 +776,8 @@
                 </div>
             </div>
 
-            <!-- CARD 7: LOCALIZAÇÃO E CONTATO RÁPIDO -->
-            <div class="bento-card" data-aos="fade-up" data-aos-delay="700">
+            <!-- CARD 7: LOCALIZAÇÃO -->
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="600">
                 <div>
                     <div class="card-tag">
                         <i data-lucide="map-pin" size="14"></i> Consultório
@@ -760,17 +813,14 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Inicializar Lucide Icons
         lucide.createIcons();
         
-        // Inicializar AOS
         AOS.init({
             duration: 900,
             once: true,
             offset: 80
         });
 
-        // Sticky Navbar Effect
         window.addEventListener("scroll", function() {
             const nav = document.querySelector(".navbar");
             nav.classList.toggle("sticky", window.scrollY > 30);
