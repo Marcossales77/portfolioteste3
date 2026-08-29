@@ -151,7 +151,7 @@
             color: var(--primary-color);
         }
 
-        /* BADGE DA NAVBAR (ALTERADO DO VERDE PARA AZUL/LILÁS) */
+        /* BADGE DA NAVBAR */
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -296,7 +296,7 @@
             font-size: 14px;
         }
 
-        /* BOTÃO ROXO ORIGINAL */
+        /* BOTÃO ROXO */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -327,7 +327,7 @@
             transform: none;
         }
 
-        /* BOTÃO CASOS DIÁRIOS (AZUL LILÁS ORIGINAL) */
+        /* BOTÃO SECUNDÁRIO */
         .btn-secondary {
             display: inline-flex;
             align-items: center;
@@ -380,6 +380,14 @@
         }
 
         /* GALERIA DE MÍDIAS */
+        .media-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
         .media-gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -575,6 +583,7 @@
             .doctor-photo-container { width: 100%; height: 240px; }
             .pillars-grid { grid-template-columns: 1fr; }
             .media-gallery-grid { grid-template-columns: 1fr; }
+            .media-header-flex { flex-direction: column; }
             .loading-text { grid-column: span 1; }
             .hero h1 { font-size: 34px; }
             .hero .slogan-pills { flex-direction: column; gap: 5px; }
@@ -594,12 +603,11 @@
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#pilares">Pilares</a></li>
-                <li><a href="#galeria">Instagram Live</a></li>
+                <li><a href="#galeria">Galeria</a></li>
                 <li><a href="#beneficios">Benefícios</a></li>
                 <li><a href="#contato">Agendar</a></li>
             </ul>
             
-            <!-- BOTÃO SUPERIOR AGORA COM COR AZUL/LILÁS -->
             <a href="#contato" class="status-badge">
                 <span class="status-dot"></span>
                 Agendar Avaliação
@@ -658,22 +666,29 @@
                     <div class="card-title">Casos Diários</div>
                     <div class="card-desc">Veja a rotina de atendimento, bastidores dos procedimentos e dúvidas frequentes nas redes.</div>
                 </div>
-                <a href="https://instagram.com" target="_blank" class="btn-secondary" style="margin-top: 20px;">
+                <a href="https://www.instagram.com/_dellsales_?igsi=MTd5b2x5cmtyMjhyZQ%3D%3D&utm_source=qr" target="_blank" class="btn-secondary" style="margin-top: 20px;">
                     <i data-lucide="arrow-up-right" size="18"></i> @_dellsales_
                 </a>
             </div>
 
-            <!-- CARD 3: GALERIA DE MÍDIAS -->
+            <!-- CARD 3: GALERIA AUTOMÁTICA DO GOOGLE DRIVE -->
             <div class="bento-card col-span-3" id="galeria" data-aos="fade-up" data-aos-delay="250">
                 <div>
-                    <div class="card-tag">
-                        <i data-lucide="instagram" size="14"></i> Feed de Resultados
+                    <div class="media-header-flex">
+                        <div>
+                            <div class="card-tag">
+                                <i data-lucide="folder-git-2" size="14"></i> Galeria de Resultados
+                            </div>
+                            <div class="card-title">Mídias e Demonstrações</div>
+                            <div class="card-desc">Confira imagens e demonstrações sincronizadas automaticamente da pasta.</div>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/186xTl8owJcntnyVlnecHG68U403Qu9wx?usp=sharing" target="_blank" class="btn-secondary">
+                            <i data-lucide="external-link" size="16"></i> Abrir Pasta no Drive
+                        </a>
                     </div>
-                    <div class="card-title">Mídias e Publicações</div>
-                    <div class="card-desc">Confira imagens e demonstrações de procedimentos executados.</div>
                     
                     <div class="media-gallery-grid" id="media-container">
-                        <p class="loading-text">Carregando galeria...</p>
+                        <p class="loading-text">Buscando mídias automaticamente na pasta do Google Drive...</p>
                     </div>
                 </div>
             </div>
@@ -795,7 +810,7 @@
     <!-- RODAPÉ -->
     <footer>
         <div class="container">
-            <p>© 2026 Dra. Edelnasi Sales — Biomédica em Estética. Todos os direitos reservados. | <a href="#contato">Contato</a> | <a href="https://instagram.com" target="_blank">Instagram</a></p>
+            <p>© 2026 Dra. Edelnasi Sales — Biomédica em Estética. Todos os direitos reservados. | <a href="#contato">Contato</a> | <a href="https://www.instagram.com/_dellsales_?igsi=MTd5b2x5cmtyMjhyZQ%3D%3D&utm_source=qr" target="_blank">Instagram</a></p>
         </div>
     </footer>
 
@@ -814,6 +829,65 @@
             const nav = document.querySelector(".navbar");
             nav.classList.toggle("sticky", window.scrollY > 30);
         });
+
+        // ----------------------------------------------------
+        // BUSCA AUTOMÁTICA DA PASTA DO GOOGLE DRIVE VIA API
+        // ----------------------------------------------------
+        const FOLDER_ID = '186xTl8owJcntnyVlnecHG68U403Qu9wx';
+        const API_KEY = 'AIzaSyBbWCpbq_tljw0lkZIC4RUDieAkJDpHaGs'; // Sua chave de API configurada
+
+        async function carregarGaleriaDrive() {
+            const mediaContainer = document.getElementById('media-container');
+
+            const query = `'${FOLDER_ID}' in parents and trashed = false`;
+            const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(query)}&fields=files(id,name,mimeType)&key=${API_KEY}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+
+                if (!data.files || data.files.length === 0) {
+                    mediaContainer.innerHTML = '<p class="loading-text">Nenhuma mídia encontrada na pasta pública do Google Drive.</p>';
+                    return;
+                }
+
+                mediaContainer.innerHTML = data.files.map(file => {
+                    let mediaElement = '';
+                    const isVideo = file.mimeType.startsWith('video/');
+                    const imgUrl = `https://lh3.googleusercontent.com/d/${file.id}`;
+                    const videoUrl = `https://drive.google.com/uc?export=download&id=${file.id}`;
+                    const driveLink = `https://drive.google.com/file/d/${file.id}/view`;
+
+                    if (isVideo) {
+                        mediaElement = `
+                            <video controls preload="metadata">
+                                <source src="${videoUrl}" type="${file.mimeType}">
+                                Seu navegador não suporta a exibição de vídeos.
+                            </video>`;
+                    } else {
+                        mediaElement = `<img src="${imgUrl}" alt="${file.name}" loading="lazy">`;
+                    }
+
+                    return `
+                        <div class="media-item">
+                            <a href="${driveLink}" target="_blank" rel="noopener noreferrer" title="${file.name}">
+                                ${mediaElement}
+                            </a>
+                        </div>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                console.error("Erro ao carregar pasta do Drive:", error);
+                mediaContainer.innerHTML = '<p class="loading-text">Erro ao conectar com a API do Google Drive. Verifique se a pasta é pública e se a API Key tem acesso.</p>';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", carregarGaleriaDrive);
 
         // FORMULÁRIO DE CONTATO (WEB3FORMS)
         const form = document.getElementById('formContato');
@@ -847,16 +921,16 @@
                     statusMensagem.innerText = "Mensagem enviada com sucesso! Entraremos em contato em breve.";
                     form.reset();
                 } else {
-                    throw new Error(res.message || "Erro no envio");
+                    throw new Error(res.message || 'Erro ao enviar.');
                 }
             })
             .catch(error => {
                 statusMensagem.style.display = "block";
-                statusMensagem.style.backgroundColor = "rgba(220, 53, 69, 0.15)";
-                statusMensagem.style.color = "#dc3545";
+                statusMensagem.style.backgroundColor = "rgba(235, 87, 87, 0.15)";
+                statusMensagem.style.color = "#eb5757";
                 statusMensagem.innerText = "Ocorreu um erro ao enviar. Tente novamente mais tarde.";
             })
-            .then(() => {
+            .finally(() => {
                 btnEnviar.disabled = false;
                 btnEnviar.innerHTML = '<i data-lucide="send" size="16"></i> Enviar Mensagem';
                 lucide.createIcons();
