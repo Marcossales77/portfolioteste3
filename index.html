@@ -381,10 +381,6 @@
 
         /* GALERIA DE MÍDIAS */
         .media-header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 15px;
             margin-bottom: 15px;
         }
 
@@ -402,12 +398,6 @@
             overflow: hidden;
             background: #000;
             aspect-ratio: 4 / 3;
-        }
-
-        .media-item a {
-            display: block;
-            width: 100%;
-            height: 100%;
         }
 
         .media-item img, 
@@ -675,16 +665,11 @@
             <div class="bento-card col-span-3" id="galeria" data-aos="fade-up" data-aos-delay="250">
                 <div>
                     <div class="media-header-flex">
-                        <div>
-                            <div class="card-tag">
-                                <i data-lucide="folder-git-2" size="14"></i> Galeria de Resultados
-                            </div>
-                            <div class="card-title">Mídias e Demonstrações</div>
-                            <div class="card-desc">Confira imagens e demonstrações sincronizadas automaticamente da pasta.</div>
+                        <div class="card-tag">
+                            <i data-lucide="folder-git-2" size="14"></i> Galeria de Resultados
                         </div>
-                        <a href="https://drive.google.com/drive/folders/186xTl8owJcntnyVlnecHG68U403Qu9wx?usp=sharing" target="_blank" class="btn-secondary">
-                            <i data-lucide="external-link" size="16"></i> Abrir Pasta no Drive
-                        </a>
+                        <div class="card-title">Mídias e Demonstrações</div>
+                        <div class="card-desc">Confira imagens e demonstrações sincronizadas automaticamente da pasta.</div>
                     </div>
                     
                     <div class="media-gallery-grid" id="media-container">
@@ -834,7 +819,7 @@
         // BUSCA AUTOMÁTICA DA PASTA DO GOOGLE DRIVE VIA API
         // ----------------------------------------------------
         const FOLDER_ID = '186xTl8owJcntnyVlnecHG68U403Qu9wx';
-        const API_KEY = 'AIzaSyBbWCpbq_tljw0lkZIC4RUDieAkJDpHaGs'; // Sua chave de API configurada
+        const API_KEY = 'AIzaSyBbWCpbq_tljw0lkZIC4RUDieAkJDpHaGs';
 
         async function carregarGaleriaDrive() {
             const mediaContainer = document.getElementById('media-container');
@@ -860,7 +845,6 @@
                     const isVideo = file.mimeType.startsWith('video/');
                     const imgUrl = `https://lh3.googleusercontent.com/d/${file.id}`;
                     const videoUrl = `https://drive.google.com/uc?export=download&id=${file.id}`;
-                    const driveLink = `https://drive.google.com/file/d/${file.id}/view`;
 
                     if (isVideo) {
                         mediaElement = `
@@ -874,9 +858,7 @@
 
                     return `
                         <div class="media-item">
-                            <a href="${driveLink}" target="_blank" rel="noopener noreferrer" title="${file.name}">
-                                ${mediaElement}
-                            </a>
+                            ${mediaElement}
                         </div>
                     `;
                 }).join('');
