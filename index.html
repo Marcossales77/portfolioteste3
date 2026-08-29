@@ -28,10 +28,10 @@
             --primary-color: #C5A059;       /* Dourado Original para Textos */
             --primary-hover: #A8833D;       
             
-            /* CORES EXCLUSIVAS DOS BOTÕES */
-            --btn-purple: #5E17EB;          /* Roxo dos Botões */
-            --btn-purple-hover: #4810BA;    /* Roxo Hover */
-            --btn-light-blue: #ACB8ED;      /* Azul/Lilás dos Botões */
+            /* CORES DOS BOTÕES */
+            --btn-purple: #5E17EB;          
+            --btn-purple-hover: #4810BA;    
+            --btn-light-blue: #ACB8ED;      /* Azul/Lilás */
             --btn-light-blue-hover: #96A5E3;
             
             --sage-green: #7A9A8B;          /* Verde Sálvia */
@@ -50,7 +50,7 @@
             text-decoration: none;
         }
 
-        /* ROLAGEM SUAVE HABILITADA */
+        /* ROLAGEM SUAVE */
         html {
             scroll-behavior: smooth;
         }
@@ -151,32 +151,33 @@
             color: var(--primary-color);
         }
 
-        /* BOTÃO DA NAVBAR QUE ROLA PARA BAIXO */
+        /* BADGE DA NAVBAR (ALTERADO DO VERDE PARA AZUL/LILÁS) */
         .status-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(122, 154, 139, 0.1);
-            border: 1px solid rgba(122, 154, 139, 0.3);
+            background: var(--btn-light-blue);
+            border: 1px solid rgba(94, 23, 235, 0.2);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 13px;
-            color: var(--sage-green);
+            color: #230863;
             font-weight: 600;
             transition: var(--transition-smooth);
         }
 
         .status-badge:hover {
-            background: rgba(122, 154, 139, 0.2);
+            background: var(--btn-light-blue-hover);
+            color: #160443;
             transform: translateY(-1px);
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
-            background-color: var(--sage-green);
+            background-color: #230863;
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--sage-green);
+            box-shadow: 0 0 8px rgba(35, 8, 99, 0.4);
             animation: pulse 2s infinite;
         }
 
@@ -295,7 +296,7 @@
             font-size: 14px;
         }
 
-        /* BOTÕES */
+        /* BOTÃO ROXO ORIGINAL */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -326,6 +327,7 @@
             transform: none;
         }
 
+        /* BOTÃO CASOS DIÁRIOS (AZUL LILÁS ORIGINAL) */
         .btn-secondary {
             display: inline-flex;
             align-items: center;
@@ -377,7 +379,7 @@
             transform: scale(1.05);
         }
 
-        /* GALERIA DE FOTOS E VÍDEOS */
+        /* GALERIA DE MÍDIAS */
         .media-gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -506,7 +508,7 @@
             border: 0;
         }
 
-        /* FORMULÁRIO DE CONTATO (ESTÁ NO FINAL DA PÁGINA) */
+        /* FORMULÁRIO DE CONTATO */
         .contact-form {
             display: flex;
             flex-direction: column;
@@ -537,7 +539,7 @@
             resize: none;
         }
 
-        /* MENSAGEM DE STATUS DO ENVIO */
+        /* MENSAGEM DE STATUS */
         #statusMensagem {
             margin-top: 10px;
             font-size: 14px;
@@ -597,7 +599,7 @@
                 <li><a href="#contato">Agendar</a></li>
             </ul>
             
-            <!-- BOTÃO DA NAVBAR QUE ROLA PARA O FORMULÁRIO EM BAIXO -->
+            <!-- BOTÃO SUPERIOR AGORA COM COR AZUL/LILÁS -->
             <a href="#contato" class="status-badge">
                 <span class="status-dot"></span>
                 Agenda Avaliação
@@ -637,12 +639,11 @@
 
                         <div>
                             <div class="card-title" style="font-size: 24px;">Sustentação e Harmonia Natural</div>
-                            <div class="card-desc">O Lifting Funcional alia ciência e tecnologia para promover o rejuvenescimento consciente. Como Biomédica Esteta, meu foco é devolver o suporte estrutural da pele mantendo a naturalidade dos seus traços.</div>
+                            <div class="card-desc">É um procedimento que promove sustentação, melhora o contorno facial e proporciona um aspecto mais firme rejuvenescido e harmonioso sem cirugia.</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- BOTÃO DO CARD QUE ROLA DIRETO PARA BAIXO NO FORMULÁRIO -->
                 <a href="#contato" class="btn-primary" style="margin-top: 20px;">
                     <i data-lucide="calendar" size="18"></i> Agendar Avaliação
                 </a>
@@ -735,7 +736,7 @@
                 </div>
             </div>
 
-            <!-- CARD 6: AGENDAMENTO & FORMULÁRIO (DESTINO FINAL DOS BOTÕES `#contato`) -->
+            <!-- CARD 6: FORMULÁRIO -->
             <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="500">
                 <div>
                     <div class="card-tag">
