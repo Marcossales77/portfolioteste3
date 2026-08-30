@@ -8,12 +8,10 @@
     <title>Dra. Edelnasi Sales | Biomédica em Estética</title>
     <link rel="icon" href="logo-dellsales.jpg">
     
-    <!-- Tipografia Inter + Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- AOS CSS & Lucide Icons -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -400,8 +398,7 @@
             aspect-ratio: 4 / 3;
         }
 
-        .media-item img, 
-        .media-item video {
+        .media-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -409,8 +406,13 @@
             display: block;
         }
 
-        .media-item:hover img,
-        .media-item:hover video {
+        .media-item iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .media-item:hover img {
             transform: scale(1.05);
         }
 
@@ -582,7 +584,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container nav-content">
             <div>
@@ -605,7 +606,6 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section class="hero" id="home" data-aos="fade-down">
         <div class="container">
             <div class="tagline">Dra Edelnasi Sales</div>
@@ -620,10 +620,8 @@
     </section>
 
     <div class="container">
-        <!-- BENTO GRID MAIN CONTAINER -->
         <main class="bento-grid">
 
-            <!-- CARD 1: SOBRE A DOUTORA -->
             <div class="bento-card col-span-2" id="about" data-aos="fade-up" data-aos-delay="100">
                 <div>
                     <div class="card-tag">
@@ -647,7 +645,6 @@
                 </a>
             </div>
 
-            <!-- CARD 2: REDES SOCIAIS -->
             <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
                 <div>
                     <div class="card-tag">
@@ -661,7 +658,6 @@
                 </a>
             </div>
 
-            <!-- CARD 3: GALERIA AUTOMÁTICA DO GOOGLE DRIVE -->
             <div class="bento-card col-span-3" id="galeria" data-aos="fade-up" data-aos-delay="250">
                 <div>
                     <div class="media-header-flex">
@@ -678,7 +674,6 @@
                 </div>
             </div>
 
-            <!-- CARD 4: PILARES DO TRATAMENTO -->
             <div class="bento-card col-span-3" id="pilares" data-aos="fade-up" data-aos-delay="300">
                 <div>
                     <div class="card-tag">
@@ -707,7 +702,6 @@
                 </div>
             </div>
 
-            <!-- CARD 5: BENEFÍCIOS -->
             <div class="bento-card col-span-3" id="beneficios" data-aos="fade-up" data-aos-delay="400">
                 <div>
                     <div class="card-tag">
@@ -736,7 +730,6 @@
                 </div>
             </div>
 
-            <!-- CARD 6: FORMULÁRIO -->
             <div class="bento-card col-span-2" id="contato" data-aos="fade-up" data-aos-delay="500">
                 <div>
                     <div class="card-tag">
@@ -765,7 +758,6 @@
                 </div>
             </div>
 
-            <!-- CARD 7: LOCALIZAÇÃO -->
             <div class="bento-card" data-aos="fade-up" data-aos-delay="600">
                 <div>
                     <div class="card-tag">
@@ -792,14 +784,12 @@
         </main>
     </div>
 
-    <!-- RODAPÉ -->
     <footer>
         <div class="container">
             <p>© 2026 Dra. Edelnasi Sales — Biomédica em Estética. Todos os direitos reservados. | <a href="#contato">Contato</a> | <a href="https://www.instagram.com/_dellsales_?igsi=MTd5b2x5cmtyMjhyZQ%3D%3D&utm_source=qr" target="_blank">Instagram</a></p>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         lucide.createIcons();
@@ -843,16 +833,19 @@
                 mediaContainer.innerHTML = data.files.map(file => {
                     let mediaElement = '';
                     const isVideo = file.mimeType.startsWith('video/');
-                    const imgUrl = `https://lh3.googleusercontent.com/d/${file.id}`;
-                    const videoUrl = `https://drive.google.com/uc?export=download&id=${file.id}`;
 
                     if (isVideo) {
+                        // Utiliza o player do próprio Google Drive via iframe para exibição correta dos vídeos
+                        const embedVideoUrl = `https://drive.google.com/file/d/${file.id}/preview`;
                         mediaElement = `
-                            <video controls preload="metadata">
-                                <source src="${videoUrl}" type="${file.mimeType}">
-                                Seu navegador não suporta a exibição de vídeos.
-                            </video>`;
+                            <iframe 
+                                src="${embedVideoUrl}" 
+                                allow="autoplay" 
+                                loading="lazy">
+                            </iframe>`;
                     } else {
+                        // Link direto para renderizar imagens
+                        const imgUrl = `https://lh3.googleusercontent.com/d/${file.id}`;
                         mediaElement = `<img src="${imgUrl}" alt="${file.name}" loading="lazy">`;
                     }
 
